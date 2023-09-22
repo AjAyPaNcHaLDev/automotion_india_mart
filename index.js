@@ -11,7 +11,7 @@ const GLUSR_CRM_KEY = "mR26Fr1t4nbIQPeo5HOC7liOolvElDlhXw==";
 // const START_TIME = "05-sept-2023";
 // const END_TIME = "11-sept-2023";
 let num = "918570091377";
-app.post("/api/v1/wp/send", async (req, res) => {
+app.get("/api/v1/wp/send", async (req, res) => {
   let i = 0;
   for (const msg of data1.RESPONSE) {
     if (i === 4) {
