@@ -15,7 +15,7 @@ app.get("/api/v1/wp/send/:number", async (req, res) => {
   num = req.params.number;
   let i = 0;
   for (const msg of data1.RESPONSE) {
-    if (i === 4) {
+    if (i === 5) {
       res
         .status(200)
         .json({ msg: "you get 5 dummy saved messages by API to WhatsApp" });
