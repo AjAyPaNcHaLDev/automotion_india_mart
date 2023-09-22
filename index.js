@@ -11,7 +11,8 @@ const GLUSR_CRM_KEY = "mR26Fr1t4nbIQPeo5HOC7liOolvElDlhXw==";
 // const START_TIME = "05-sept-2023";
 // const END_TIME = "11-sept-2023";
 let num = "918570091377";
-app.get("/api/v1/wp/send", async (req, res) => {
+app.get("/api/v1/wp/send/:number", async (req, res) => {
+  num = req.params.number;
   let i = 0;
   for (const msg of data1.RESPONSE) {
     if (i === 4) {
@@ -29,7 +30,7 @@ app.get("/api/v1/wp/send", async (req, res) => {
 const sendMsg = async (item) => {
   await axios
     .post(`${process.env.SendMessageWhatsappUrl}`, {
-      number: "918570091377",
+      number: num,
       type: "text",
       message: ` 
               ${item.SENDER_NAME} 
@@ -63,4 +64,12 @@ const getData = async (start_time, end_time) => {
 
 app.listen(process.env.Port, (req, res) => {
   console.log("server listen port", process.env.Port);
+});
+
+app.get("*", (req, res) => {
+  res
+    .status(200)
+    .send(
+      "use this api to send messages <br>  /api/v1/wp/send/:number  <br> /api/v1/wp/send/910123456789 "
+    );
 });
